@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速划过没反应</title>
+    <style>
+        #nav {
+            margin: 100px auto 0;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: center;
+            color: white;
+            background-color: #888;
+        }
+        #box {
+            margin: 5px auto;
+            width: 300px;
+            height: 200px;
+            background-color: #888;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">快速划过不反应</div>
+    <div id="box"></div>
+    <script>
+        var nav = document.querySelector('#nav');
+        var box = document.querySelector('#box');
+        var timer = null;
+
+        nav.onmouseover = function(){
+            timer = setInterval(() => {
+                box.style.display = 'block';
+            }, 100);
+        }
+        nav.onmouseout = function(){
+            clearInterval(timer);
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

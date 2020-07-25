@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  margin: 2px auto;
+  width: 794px;
+  height: 1120px;
+  background-color: wheat;
+  overflow: hidden;
+  position: relative;
+}
+.box span {
+  width: 49.625px;
+  height: 56px;
+  opacity: 1;
+  position: absolute;
+  background: url('images/1.jpg') no-repeat;
+}

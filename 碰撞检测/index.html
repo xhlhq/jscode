@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碰撞检测</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: turquoise;
+            left: 100px;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: turquoise;
+            top: 100px;
+        }
+        .normal {
+            background-color: turquoise;
+        }
+        .crash {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        var box1 = $('.box1');
+        var box2 = $('.box2');
+        box1.mousedown(function(ev){
+            var disX = ev.clientX - box1.offset().left;
+            var disY = ev.clientY - box1.offset().top;
+            // console.log("clientX:"+ev.clientX+' '+"clientY:"+ev.clientY+' '+"disX:"+disX+' '+"disY:"+disY);
+            $(document).mousemove(move);
+            $(document).mouseup(up);
+
+            function move(ev){
+                var left = ev.clientX - disX;
+                var top = ev.clientY - disY;
+                //移动
+                box1.css({
+                    left:left+'px',
+                    top:top+'px'
+                });
+
+                var left1 = box1.offset().left;
+                var top1 = box1.offset().top;
+                var right1 = left1 + box1.outerWidth();
+                var bottom1 = top1 + box1.outerHeight();
+
+                var left2 = box2.offset().left;
+                var top2 = box2.offset().top;
+                var right2 = left2 + box2.outerWidth();
+                var bottom2 = top2 + box2.outerHeight();
+
+                if(left1>right2 || top1>bottom2 || right1<left2 ||bottom1<top2){
+                    box1.removeClass('crash');
+                    box2.removeClass('crash');
+                    box1.addClass('normal');
+                    box2.addClass('normal');
+                }else{
+                    box1.addClass('crash');
+                    box2.addClass('crash');
+                }
+            }
+            function up(ev){
+                $(document).off('mousemove',move);
+                $(document).off('mouseup',up);
+            }
+        })
+    </script>
+</body>
+</html>
