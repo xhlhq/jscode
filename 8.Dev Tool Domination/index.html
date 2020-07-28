@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+    makeGreen();
+
+    // Regular
+    //常规输出
+    console.log('你好啊');
+
+    // Interpolated
+    //字符替换
+    console.log('hello this is a %s', '💩');
+    console.log('hello this is a %d', 99);
+    console.log('hello this is a %o', {a:'b'});
+    
+    // Styled
+    //设置输出的格式
+    console.log("偷偷告诉你，我会变身 %c ~\(≧▽≦)/~巴拉拉~~ %c ~\(≧▽≦)/~巴拉拉~~ %c", "color: #00fdff; font-size: 2em;");
+
+    // warning!
+    console.warn('警告！警告！电脑即将爆炸，请立马 %c 删库！！',"border:1px solid blue")
+
+    // Error :|
+    console.error('出错，出错了 %s','💩')
+
+    // Info
+    console.info('输出，输出！！')
+    console.info('%c 输出，输出！！',"color:#002333;font-size:20px")
+
+    // Viewing DOM Elements
+    // 打印输出 DOM 元素
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
+
+    // Testing
+    console.assert(1===1,"没出错，不会显示")
+    console.assert(1===0,'出错了，会显示')
+    console.assert(p.innerHTML.match("她"), "我这儿才没有她这个人");
+
+    // clearing
+    //console.clear()
+
+    // Grouping together
+    dogs.forEach(dog => {
+        console.group()
+        console.log(`${dog.name}`)
+        console.log(`${dog.age}`)
+        console.log(`${dog.name}今年${dog.age}了`)
+        console.groupEnd()
+    })
+    console.table(dogs);
+    console.table(dogs,['age']);
+
+    // counting
+    console.count("（读来过反）羊只");
+    console.count("（读来过反）羊只");
+    console.count("（读来过反）鱼条");
+    console.count("（读来过反）羊只");
+    console.count("（读来过反）羊只");
+    console.count("（读来过反）鱼条");
+    console.count("（读来过反）鱼条");
+    console.count("（读来过反）羊只");
+
+    // timing
+    console.time('fetch my data');
+    console.timeEnd('fetch my data');
+
+  </script>
+</body>
+</html>
