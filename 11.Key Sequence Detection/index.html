@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Sequence Detection</title>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        var container = document.querySelector('.container');
+        const pressed = [];
+        const secretCode = 'xhlhq';
+        window.addEventListener('keyup',(e)=>{
+            console.log(e.key);
+            pressed.push(e.key);
+            //splice第一个参数为负数，则从末尾开始切除
+            pressed.splice(-secretCode.length-1,pressed.length-secretCode.length);
+            if(pressed.join('').includes(secretCode)){
+                container.innerHTML='恭喜你猜对了密码';
+            }
+            console.log(pressed);
+        })
+    </script>
+</body>
+</html>
