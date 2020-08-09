@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页弹窗</title>
+</head>
+<body>
+    <script>
+        /*
+        *window对象集合
+        *window.screen对象
+        *window.location对象
+        *window.history对象
+        *window.navigator对象
+        *Cookies操作
+        */
+       var subwin = null;
+       setTimeout(() => {
+           subwin = window.open('','_blank','width=200,height=200;top=500,left=50');
+           let x = window.innerWidth/2 - subwin.outerWidth/2;
+           let y = window.innerHeight/2 - subwin.outerHeight/2;
+           subwin.moveTo(x,y);
+       }, 5000);
+       setTimeout(() => {
+           if(!subwin.closed){
+            subwin.close();
+           }
+       }, 10000);
+    </script>
+</body>
+</html>
